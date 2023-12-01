@@ -70,7 +70,7 @@ function createAndAddPost(pObj) {
   // sukurti ir patalpinti i html 1 elementa
   // sukurriam vieno el isorini div
   const divEl = document.createElement('div');
-  divEl.classList.add('col-6', 'mb-4');
+  divEl.classList.add('col-4', 'mb-4');
   // sukuriam vidi el dali
   divEl.innerHTML = `
     <div class="card ">
