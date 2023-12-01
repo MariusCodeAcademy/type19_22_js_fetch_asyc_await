@@ -8,3 +8,11 @@ console.log('dummy.js file was loaded');
 // parsisiusti su pagalbine fn getData()
 
 // iskonsolinti sitame faile visus post
+
+async function getPosts() {
+  const ats = await getData('https://dummyjson.com/posts');
+  // console.log('ats ===', ats);
+  const { posts } = ats;
+  console.log('posts ===', posts);
+}
+getPosts();

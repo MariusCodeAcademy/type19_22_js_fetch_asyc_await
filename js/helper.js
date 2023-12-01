@@ -6,14 +6,14 @@ console.log('santas little helper.js file was loaded');
 function getData(url) {
   return fetch(url)
     .then((resp) => {
-      console.log('resp ===', resp);
+      // console.log('resp ===', resp);
       if (resp.ok === false) {
         throw new Error(`Klaida: ${resp.statusText} code: ${resp.status}`);
       }
       return resp.json();
     })
     .then((data) => {
-      console.log('getData got data ===', data);
+      // console.log('getData got data ===', data);
       return data;
     })
     .catch((error) => {
