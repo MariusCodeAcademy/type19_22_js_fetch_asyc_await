@@ -1,7 +1,7 @@
 'use strict';
 console.log('asyncAwait.js file was loaded');
 
-const baseUrl = 'https://jsonplaceholder.typicode.com';
+const baseUrl = '123https://jsonplaceholder.typicode.com';
 
 function getUsers() {
   return fetch(`${baseUrl}/users`)
@@ -17,13 +17,18 @@ function getUsers() {
 }
 // async ir await
 async function getUsersA() {
-  const resp = await fetch(`${baseUrl}/users`);
-  const data = await resp.json();
-  console.log('data ===', data);
-  return data;
+  try {
+    const resp = await fetch(`${baseUrl}/users`);
+    const data = await resp.json();
+    console.log('data ===', data);
+    return data;
+  } catch (error) {
+    console.warn('getUsersA klaida', error);
+    return false;
+  }
 }
 // let rez = getUsersA();
 // console.log('rez ===', rez); // promise
 
-// getUsersA().then((rez) => console.log(rez));
-getUsers().then((rez) => console.log(rez));
+getUsersA().then((rez) => console.log(rez));
+// getUsers().then((rez) => console.log(rez));
