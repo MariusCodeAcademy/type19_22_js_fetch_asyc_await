@@ -13,7 +13,7 @@ function getData(url) {
       return resp.json();
     })
     .then((data) => {
-      console.log('getData got data ===', data);
+      // console.log('getData got data ===', data);
       return data;
     })
     .catch((error) => {

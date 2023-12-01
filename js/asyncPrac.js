@@ -17,15 +17,9 @@ async function getTodos() {
 }
 // console.log('getTodos ===', getTodos());
 // posts - pirmus 15
-const getPosts = async function () {
-  try {
-    const resp = await fetch(`${baseUrl}/posts`);
-    const postsArr = await resp.json();
-    // console.log('postsArr ===', postsArr.slice(0, 15));
-    return postsArr.slice(0, 15);
-  } catch (error) {
-    console.warn(error);
-  }
+const getPosts = async function (limit = 10) {
+  const allPosts = await getData(`${baseUrl}/posts`);
+  return allPosts.slice(0, limit);
 };
 // getPosts();
 // comments - pirmus 7
@@ -45,13 +39,14 @@ const getComments = async () => {
 // 2. sujungti i viena masyva ir atspausdinti todos, posts ir comments
 
 async function init() {
-  const todoArr = await getTodos();
-  const postsArr = await getPosts();
-  const commArr = await getComments();
+  let todoArr = await getData(`${baseUrl}/todos`);
+  todoArr = todoArr.slice(0, 10);
+  let postsArr = await getPosts(10);
+  let commArr = await getComments();
   console.log('todoArr ===', todoArr);
-  console.log('commArr ===', commArr);
   console.log('postsArr ===', postsArr);
-  const oneArrToRuleThemAll = [...todoArr, ...commArr, ...postsArr];
-  console.log('oneArrToRuleThemAll ===', oneArrToRuleThemAll);
+  // console.log('commArr ===', commArr);
+  // const oneArrToRuleThemAll = [...todoArr, ...commArr, ...postsArr];
+  // console.log('oneArrToRuleThemAll ===', oneArrToRuleThemAll);
 }
 init();
